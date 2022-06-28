@@ -10,30 +10,31 @@ module.exports = function toReadable (num) {
 
   if (strNum.length === 3) {
     hundreds = findHundreds(num);
+    message = `${hundreds}`;
     if (num % 100 !== 0) {
       tens = findTens(num);
+      message = `${hundreds} ${tens}`;
     }
   }
 
   if (strNum.length === 2) {
     tens = findTens(num);
+    message = `${tens}`;
   }
   
   if (strNum.length === 1) {
     units = obj[num];
+    message = `${units}`;
   }
 
-  return message = `${hundreds}${tens}${units}`; 
+  return message; 
 }
 
 const findHundreds = (n) => {
-  if (n % 100 === 0) {
-    return `${obj[Math.floor(n / 100)]} hundred`
-  }
   if (n % 100 !== 0) {
-    return `${obj[Math.floor(n / 100)]} hundred `;
+    return `${obj[Math.floor(n / 100)]} hundred`;
   }
-  return `${obj[Math.floor(n / 100)]} hundred `;
+  return `${obj[Math.floor(n / 100)]} hundred`;
 }
 
 const findTens = (n) => {
